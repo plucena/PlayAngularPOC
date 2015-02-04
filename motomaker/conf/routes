@@ -3,7 +3,6 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
 GET     /Book/webresources/com.percivallucena.book.book	controllers.Books.index()
 
 # Map static resources from the /public folder to the /assets URL path
