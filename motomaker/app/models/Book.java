@@ -1,7 +1,12 @@
 package models;
 
-public class Book {
+import play.db.ebean.Model;
+import javax.persistence.*;
+
+@Entity
+public class Book extends Model {
 	
+	@Id @GeneratedValue
 	private int id;
 	private String author;
 	private String collection;

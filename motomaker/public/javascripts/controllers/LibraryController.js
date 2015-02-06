@@ -1,12 +1,14 @@
-(function(angular) {
 
 var M4M = angular.module('m4mApp', []);
 
 
-M4M.controller('LibraryController', ['$scope', function($scope) {
+M4M.controller('LibraryController', ['$scope', '$http', function($scope,$http) {
 	
-	$scope.books  = [{"id":1,"author":"Douglas Adams","collection":"fiction","other":"","title":"hitchhiker's guide to the galaxy","user":"plucena@gmail.com"},{"id":1,"author":"George Orwell","collection":"fiction","other":"","title":"1984","user":"plucena@gmail.com"}];
+	
+	$http.get('http://localhost:9000/Book/webresources/com.percivallucena.book.book').then(function(result) {
+	$scope.books = result.data;
+	}); 
+	
 	
 }]);
 
-})(window.angular);
