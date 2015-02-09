@@ -55,9 +55,12 @@ public class BookController  extends Controller {
 	      return jsonResult;
 	    }
 
-	  
+	  @BodyParser.Of(BodyParser.Json.class)
 	  public static Result create() {
-		  return null;
+		  System.out.println("Creating...");
+		 // JsonNode json = request().body().asJson();
+		 // String title = json.findPath("title").textValue();
+		  return ok("Hello " + request().body().asText());
 	  }
 	  
 
