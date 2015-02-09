@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-public class Books  extends Controller {
+public class BookController  extends Controller {
 	
 	  public static Result listAll() {
 		  JsonNode jsonNode = null;

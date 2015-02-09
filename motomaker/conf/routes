@@ -3,9 +3,9 @@
 # ~~~~
 
 # Home page
-GET     /Book/webresources/com.percivallucena.book.book	controllers.Books.listAll()
-GET     /Book/webresources/com.percivallucena.book.book/:user	controllers.Books.selectByUser(user: String)
-PUT 	/Book/webresources/com.percivallucena.book.book	controllers.Books.create()
+GET     /Book/webresources/com.percivallucena.book.book	controllers.BookController.listAll()
+GET     /Book/webresources/com.percivallucena.book.book/:user	controllers.BookController.selectByUser(user: String)
+PUT 	/Book/webresources/com.percivallucena.book.book	controllers.BookController.create()
 
 
 # Map static resources from the /public folder to the /assets URL path
