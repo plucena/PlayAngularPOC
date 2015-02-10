@@ -12,7 +12,7 @@ import views.html.*;
 import com.avaje.ebean.Ebean;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.fasterxml.jackson.core.*;
 
 public class BookController  extends Controller {
 	
@@ -57,10 +57,22 @@ public class BookController  extends Controller {
 
 	  @BodyParser.Of(BodyParser.Json.class)
 	  public static Result create() {
-		  System.out.println("Creating...");
-		 // JsonNode json = request().body().asJson();
-		 // String title = json.findPath("title").textValue();
-		  return ok("Hello " + request().body().asText());
+		 
+		 try {
+			 System.out.println("Creating...");
+			 JsonNode json = request().body().asJson();
+			 ObjectMapper mapper = new ObjectMapper();
+			 JsonFactory factory = new JsonFactory();
+			 JsonParser jp = factory.createJsonParser(json.toString());    
+			 Book  b = mapper.readValue(jp, Book.class);
+			 Ebean.save(b);
+	         return ok("ok "+ b.getAuthor()); 
+
+		 }
+		 catch(Exception e) {
+			 return internalServerError(e.getMessage());
+		 }
+
 	  }
 	  
 
