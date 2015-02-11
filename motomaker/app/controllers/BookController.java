@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import model.dao.BookDAO;
 import model.services.BookService;
@@ -19,34 +20,34 @@ import com.fasterxml.jackson.core.*;
 public class BookController extends BaseController {
 
 	public static Result listAll() {
-		try {
-			BookService bookService = new BookService(new BookDAO());
-			List<Book> lista = bookService.selectAll();	
-			return ok(JsonObjectParser.Serialize(lista));			
-		} catch (Exception e) {
-			return internalServerError(e.getMessage());
-		}
+		return executionHandler(new Callable<Result>() {
+			public Result call() throws Exception {
+				BookService bookService = new BookService(new BookDAO());
+				List<Book> lista = bookService.selectAll();
+				return ok(JsonObjectParser.Serialize(lista));
+			}
+		});
 	}
 
 	public static Result selectByUser(String user) {
-		try {
-			BookService bookService = new BookService(new BookDAO());
-			List<Book> lista = bookService.selectByUser(user);
-			return ok(JsonObjectParser.Serialize(lista));
-		} catch (Exception e) {
-			return internalServerError(e.getMessage());
-		}
+		return executionHandler(new Callable<Result>() {
+			public Result call() throws Exception {
+				BookService bookService = new BookService(new BookDAO());
+				List<Book> lista = bookService.selectByUser(user);
+				return ok(JsonObjectParser.Serialize(lista));
+			}
+		});
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result create() {
-		try {
-			BookService bookService = new BookService(new BookDAO());
-			Book book = getModelFromRequest(Book.class);
-			bookService.create(book);
-			return ok("ok " + book.getAuthor());
-		} catch (Exception e) {
-			return internalServerError(e.getMessage());
-		}
+		return executionHandler(new Callable<Result>() {
+			public Result call() throws Exception {
+				BookService bookService = new BookService(new BookDAO());
+				Book book = getModelFromRequest(Book.class);
+				bookService.create(book);
+				return ok("ok " + book.getAuthor());
+			}
+		});
 	}
 }
