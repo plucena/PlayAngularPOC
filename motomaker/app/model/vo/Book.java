@@ -1,4 +1,4 @@
-package models;
+package model.vo;
 
 import play.db.ebean.Model;
 import javax.persistence.*;
@@ -65,7 +65,7 @@ public class Book extends Model {
 	
 	public Book(){};
 	
-	public Book(int id, String author, String collection, String other,
+	public Book(String author, String collection, String other,
 			String title, String user) {
 		super();
 		this.id = id;
