@@ -86,7 +86,7 @@ public class ApplicationTest {
 	        // Create
 	        ddl.runScript(false, ddl.generateCreateDdl());
 			
-	        //app.
+	        
 	        
 	    	Result result = callAction(controllers.routes.ref.BookController.create(), fakeRequest().withJsonBody(jsonNode));
 	    	

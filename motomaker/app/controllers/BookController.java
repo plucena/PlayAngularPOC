@@ -19,10 +19,11 @@ public class BookController extends Controller {
 
 	public static Result listAll() {
 		JsonNode jsonNode = null;
+		BookService bookService = new BookService(new BookDAO());
 
 		try {
 			// get book list from database
-			List<Book> lista = Ebean.createQuery(Book.class).findList();
+			List<Book> lista = bookService.selectAll();
 
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(lista);
@@ -37,11 +38,11 @@ public class BookController extends Controller {
 
 	public static Result selectByUser(String user) {
 		JsonNode jsonNode = null;
+		BookService bookService = new BookService(new BookDAO());
 
 		try {
 			// get book list from database
-			List<Book> lista = Ebean.find(Book.class).where()
-					.like("user", user).findList();
+			List<Book> lista = bookService.selectByUser(user);
 
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(lista);
@@ -56,7 +57,7 @@ public class BookController extends Controller {
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result create() {
-		BookService bookService = new BookService(new BookDAO());		
+		BookService bookService = new BookService(new BookDAO());
 
 		try {
 			System.out.println("Creating...");
@@ -67,7 +68,6 @@ public class BookController extends Controller {
 			Book b = mapper.readValue(jp, Book.class);
 			bookService.createBook(b);
 			return ok("ok " + b.getAuthor());
-
 		} catch (Exception e) {
 			return internalServerError(e.getMessage());
 		}
