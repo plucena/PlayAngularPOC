@@ -16,14 +16,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.*;
 
-public class BookController extends Controller {
+public class BookController extends BaseController {
 
 	public static Result listAll() {
 		try {
 			BookService bookService = new BookService(new BookDAO());
 			List<Book> lista = bookService.selectAll();	
-			JsonNode jsonNode = JsonObjectParser.Serialize(lista);
-			return ok(jsonNode);			
+			return ok(JsonObjectParser.Serialize(lista));			
 		} catch (Exception e) {
 			return internalServerError(e.getMessage());
 		}
@@ -33,8 +32,7 @@ public class BookController extends Controller {
 		try {
 			BookService bookService = new BookService(new BookDAO());
 			List<Book> lista = bookService.selectByUser(user);
-			JsonNode jsonNode = JsonObjectParser.Serialize(lista);
-			return ok(jsonNode);
+			return ok(JsonObjectParser.Serialize(lista));
 		} catch (Exception e) {
 			return internalServerError(e.getMessage());
 		}
@@ -44,8 +42,7 @@ public class BookController extends Controller {
 	public static Result create() {
 		try {
 			BookService bookService = new BookService(new BookDAO());
-			JsonNode json = request().body().asJson();
-			Book book = JsonObjectParser.Deserialize(json, Book.class);
+			Book book = getModelFromRequest(Book.class);
 			bookService.createBook(book);
 			return ok("ok " + book.getAuthor());
 		} catch (Exception e) {
