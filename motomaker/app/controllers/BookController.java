@@ -65,9 +65,9 @@ public class BookController extends Controller {
 			ObjectMapper mapper = new ObjectMapper();
 			JsonFactory factory = new JsonFactory();
 			JsonParser jp = factory.createJsonParser(json.toString());
-			Book b = mapper.readValue(jp, Book.class);
-			bookService.createBook(b);
-			return ok("ok " + b.getAuthor());
+			Book book = mapper.readValue(jp, Book.class);
+			bookService.createBook(book);
+			return ok("ok " + book.getAuthor());
 		} catch (Exception e) {
 			return internalServerError(e.getMessage());
 		}

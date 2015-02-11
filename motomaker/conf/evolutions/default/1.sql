@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table book (
-  id                        integer auto_increment not null,
+  id                        integer not null,
   author                    varchar(255),
   collection                varchar(255),
   other                     varchar(255),
@@ -13,14 +13,18 @@ create table book (
   constraint pk_book primary key (id))
 ;
 
+create sequence book_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table book;
+drop table if exists book;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists book_seq;
 

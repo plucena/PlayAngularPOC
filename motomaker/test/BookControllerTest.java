@@ -41,7 +41,6 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.config.ServerConfig;
 import com.avaje.ebean.config.dbplatform.MySqlPlatform;
-//import com.avaje.ebean.MockiEbean;
 import com.avaje.ebeaninternal.server.core.DefaultServer;
 import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 
@@ -52,7 +51,12 @@ import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 * If you are interested in mocking a whole application, see the wiki for more details.
 *
 */
-public class ApplicationTest {
+public class BookControllerTest {
+	
+	@Before
+	public void setUp() {
+		start(fakeApplication(inMemoryDatabase()));
+	}
 	
     @Test
     public void simpleCheck() {
@@ -63,30 +67,10 @@ public class ApplicationTest {
     @Test
     public void createBook() throws JsonProcessingException {
     	try {
-    		Ebean.getServer("bookDS");
-    		
     		Book book = new Book("Jake Delta", "wish", "", "Play Framework 2 For Java", "mleonardi@ciandt.com");
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(book);
-			JsonNode jsonNode = mapper.readTree(json);
-			
-			FakeApplication app = fakeApplication(inMemoryDatabase());
-			Helpers.start(app);
-			
-			EbeanServer server = Ebean.getServer("bookDS");
-			
-			ServerConfig config = new ServerConfig();
-	        
-	        DdlGenerator ddl = new DdlGenerator();
-	        ddl.setup((SpiEbeanServer) server, new MySqlPlatform(), config);
-	        
-	        // Drop
-	        ddl.runScript(false, ddl.generateDropDdl());
-	 
-	        // Create
-	        ddl.runScript(false, ddl.generateCreateDdl());
-			
-	        
+			JsonNode jsonNode = mapper.readTree(json);        
 	        
 	    	Result result = callAction(controllers.routes.ref.BookController.create(), fakeRequest().withJsonBody(jsonNode));
 	    	
