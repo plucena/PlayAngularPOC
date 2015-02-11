@@ -43,7 +43,7 @@ public class BookController extends BaseController {
 		try {
 			BookService bookService = new BookService(new BookDAO());
 			Book book = getModelFromRequest(Book.class);
-			bookService.createBook(book);
+			bookService.create(book);
 			return ok("ok " + book.getAuthor());
 		} catch (Exception e) {
 			return internalServerError(e.getMessage());
