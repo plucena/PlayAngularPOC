@@ -44,26 +44,13 @@ import com.avaje.ebean.config.dbplatform.MySqlPlatform;
 import com.avaje.ebeaninternal.server.core.DefaultServer;
 import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 
-
-/**
-*
-* Simple (JUnit) tests that can call all parts of a play app.
-* If you are interested in mocking a whole application, see the wiki for more details.
-*
-*/
 public class BookControllerTest {
-	
+
 	@Before
 	public void setUp() {
 		start(fakeApplication(inMemoryDatabase()));
 	}
 	
-    @Test
-    public void simpleCheck() {
-        int a = 1 + 1;
-        assertThat(a).isEqualTo(2);
-    }
-    
     @Test
     public void createBook() throws JsonProcessingException {
     	try {
@@ -78,12 +65,5 @@ public class BookControllerTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
-
-    @Test
-    public void renderTemplate() {
-        //Content html = views.html.index.render("Your new application is ready.");
-        //assertThat(contentType(html)).isEqualTo("text/html");
-        //assertThat(contentAsString(html)).contains("Your new application is ready.");
     }
 }
