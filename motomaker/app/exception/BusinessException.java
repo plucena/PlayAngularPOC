@@ -2,6 +2,10 @@ package exception;
 
 public class BusinessException extends Exception {
 
+	public BusinessException() {
+		super();
+	}
+	
 	/**
 	 * @param string 
 	 * @see Exception#Exception()
