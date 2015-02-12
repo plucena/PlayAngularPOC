@@ -29,7 +29,7 @@ public class BookController extends BaseController {
 		});
 	}
 
-	public static Result selectByUser(String reader) {
+	public static Result selectByUser(final String reader) {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
