@@ -5,11 +5,11 @@
 
 create table book (
   id                        integer not null,
-  author                    varchar(255),
-  collection                varchar(255),
+  author                    varchar(255) not null,
+  collection                varchar(255) not null,
   other                     varchar(255),
-  title                     varchar(255),
-  user                      varchar(255),
+  title                     varchar(255) not null,
+  reader                    varchar(255) not null,
   constraint pk_book primary key (id))
 ;
 
@@ -20,11 +20,7 @@ create sequence book_seq;
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
-
-drop table if exists book;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists book cascade;
 
 drop sequence if exists book_seq;
 
