@@ -4,9 +4,12 @@ import play.db.ebean.Model;
 import util.StringFunctions;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
+import play.data.validation.Constraints.MaxLength;
 import exception.VOException;
 
 @Entity
@@ -15,21 +18,20 @@ public class Book extends Model {
 	@Id
 	@GeneratedValue
 	private int id;
-	@Constraints.Required
-	@Constraints.MaxLength(255)
+	@NotNull
+	@MaxLength(255)
 	private String author;
-	@Constraints.Required
-	@Constraints.MaxLength(255)
+	@NotNull
+	@MaxLength(255)
 	private String collection;
-	@Constraints.MaxLength(255)
+	@MaxLength(255)
 	private String other;
-	@Constraints.Required
-	@Constraints.MaxLength(255)
+	@NotNull
+	@MaxLength(255)
 	private String title;
-	@Constraints.Required
-	@Constraints.MaxLength(255)
-	private String user;
-	
+	@NotNull
+	@MaxLength(255)
+	private String reader;
 	
 	public int getId() {
 		return id;
@@ -43,7 +45,7 @@ public class Book extends Model {
 		return author;
 	}
 	
-	public void setAuthor(String author) throws VOException {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 	
@@ -51,7 +53,7 @@ public class Book extends Model {
 		return collection;
 	}
 	
-	public void setCollection(String collection) throws VOException {
+	public void setCollection(String collection) {
 		this.collection = collection;
 	}
 	
@@ -67,27 +69,27 @@ public class Book extends Model {
 		return title;
 	}
 	
-	public void setTitle(String title) throws VOException {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 	
-	public String getUser() {
-		return user;
+	public String getReader() {
+		return reader;
 	}
-	
-	public void setUser(String user) throws VOException {
-		this.user = user;
+
+	public void setReader(String reader) {
+		this.reader = reader;
 	}
 	
 	public Book(){};
 	
 	public Book(String author, String collection, String other,
-			String title, String user) throws VOException {
+			String title, String reader) {
 		super();
 		setAuthor(author);
 		setCollection(collection);
 		setOther(other);
 		setTitle(title);
-		setUser(user);
+		setReader(reader);
 	}
 }
