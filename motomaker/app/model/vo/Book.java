@@ -18,19 +18,10 @@ public class Book extends Model {
 	@Id
 	@GeneratedValue
 	private int id;
-	/*@NotNull
-	@MaxLength(255)*/
 	private String author;
-	/*@NotNull
-	@MaxLength(255)*/
 	private String collection;
-	/*@MaxLength(255)*/
 	private String other;
-	/*@NotNull
-	@MaxLength(255)*/
 	private String title;
-	/*@NotNull
-	@MaxLength(255)*/
 	private String reader;
 	
 	public int getId() {
