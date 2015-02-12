@@ -12,9 +12,17 @@ public class Book extends Model {
 	private String collection;
 	private String other;
 	private String title;
-	private String user;
+	private String reader;
 	
 	
+	public String getReader() {
+		return reader;
+	}
+
+	public void setReader(String reader) {
+		this.reader = reader;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -55,25 +63,18 @@ public class Book extends Model {
 		this.title = title;
 	}
 	
-	public String getUser() {
-		return user;
-	}
-	
-	public void setUser(String user) {
-		this.user = user;
-	}
 	
 	public Book(){};
 	
 	public Book(String author, String collection, String other,
-			String title, String user) {
+			String title, String reader) {
 		super();
 		this.id = id;
 		this.author = author;
 		this.collection = collection;
 		this.other = other;
 		this.title = title;
-		this.user = user;
+		this.reader = reader;
 	}
 	
 	
