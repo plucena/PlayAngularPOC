@@ -13,9 +13,9 @@ public class BookDAO extends BaseDAO<Book> {
 		super(Book.class);
 	}
 
-	public List<Book> selectByUser(String user) throws PersistenceException {
+	public List<Book> selectByReader(String reader) throws PersistenceException {
 		try {
-			return Ebean.find(Book.class).where().like("user", user).findList();
+			return Ebean.find(Book.class).where().like("reader", reader).findList();
 		} catch (Exception ex) {
 			throw new PersistenceException(ex);
 		}

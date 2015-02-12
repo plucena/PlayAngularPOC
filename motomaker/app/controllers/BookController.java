@@ -29,11 +29,11 @@ public class BookController extends BaseController {
 		});
 	}
 
-	public static Result selectByUser(String user) {
+	public static Result selectByUser(String reader) {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
-				List<Book> lista = bookService.selectByUser(user);
+				List<Book> lista = bookService.selectByReader(reader);
 				return ok(JsonObjectParser.Serialize(lista));
 			}
 		});

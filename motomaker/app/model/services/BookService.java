@@ -15,9 +15,9 @@ public class BookService extends BaseService<Book> {
 		_bookDAO = bookDAO;
 	}
 	
-	public List<Book> selectByUser(String user) throws BusinessException {
+	public List<Book> selectByReader(String reader) throws BusinessException {
 		try {
-			return _bookDAO.selectByUser(user);
+			return _bookDAO.selectByReader(reader);
 		} catch (PersistenceException pe) {
 			throw new BusinessException(pe);
 		}
