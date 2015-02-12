@@ -1,17 +1,33 @@
 package model.vo;
 
 import play.db.ebean.Model;
+import util.StringFunctions;
+
 import javax.persistence.*;
+import play.db.ebean.*;
+import play.data.format.*;
+import play.data.validation.*;
+import exception.VOException;
 
 @Entity
 public class Book extends Model {
 	
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
+	@Constraints.Required
+	@Constraints.MaxLength(255)
 	private String author;
+	@Constraints.Required
+	@Constraints.MaxLength(255)
 	private String collection;
+	@Constraints.MaxLength(255)
 	private String other;
+	@Constraints.Required
+	@Constraints.MaxLength(255)
 	private String title;
+	@Constraints.Required
+	@Constraints.MaxLength(255)
 	private String user;
 	
 	
@@ -27,7 +43,7 @@ public class Book extends Model {
 		return author;
 	}
 	
-	public void setAuthor(String author) {
+	public void setAuthor(String author) throws VOException {
 		this.author = author;
 	}
 	
@@ -35,7 +51,7 @@ public class Book extends Model {
 		return collection;
 	}
 	
-	public void setCollection(String collection) {
+	public void setCollection(String collection) throws VOException {
 		this.collection = collection;
 	}
 	
@@ -51,7 +67,7 @@ public class Book extends Model {
 		return title;
 	}
 	
-	public void setTitle(String title) {
+	public void setTitle(String title) throws VOException {
 		this.title = title;
 	}
 	
@@ -59,23 +75,19 @@ public class Book extends Model {
 		return user;
 	}
 	
-	public void setUser(String user) {
+	public void setUser(String user) throws VOException {
 		this.user = user;
 	}
 	
 	public Book(){};
 	
 	public Book(String author, String collection, String other,
-			String title, String user) {
+			String title, String user) throws VOException {
 		super();
-		this.id = id;
-		this.author = author;
-		this.collection = collection;
-		this.other = other;
-		this.title = title;
-		this.user = user;
+		setAuthor(author);
+		setCollection(collection);
+		setOther(other);
+		setTitle(title);
+		setUser(user);
 	}
-	
-	
-	
 }
