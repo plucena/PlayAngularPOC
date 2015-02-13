@@ -46,7 +46,6 @@ import com.avaje.ebeaninternal.server.core.DefaultServer;
 import com.avaje.ebeaninternal.server.ddl.DdlGenerator;
 
 public class BookControllerTest {
-
 	@Before
 	public void setUp() {
 		start(fakeApplication(inMemoryDatabase()));
