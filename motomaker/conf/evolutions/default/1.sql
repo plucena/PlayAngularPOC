@@ -1,6 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
 # --- !Ups
 
 create table book (
@@ -20,11 +17,7 @@ create sequence book_seq;
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
-
-drop table if exists book;
-
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table if exists book cascade;
 
 drop sequence if exists book_seq;
 
