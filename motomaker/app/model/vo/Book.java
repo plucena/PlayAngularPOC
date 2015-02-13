@@ -15,7 +15,6 @@ import exception.VOException;
 
 @Entity
 public class Book extends Model {
-	
 	@Id
 	@GeneratedValue
 	private int id;

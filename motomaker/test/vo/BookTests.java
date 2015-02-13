@@ -15,7 +15,6 @@ import exception.PersistenceException;
 import exception.VOException;
 
 public class BookTests {
-	
 	@Rule public ExpectedException thrown = ExpectedException.none();
 	
 	@Before
