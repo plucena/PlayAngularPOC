@@ -1,4 +1,4 @@
-package suites;
+/*package suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -16,4 +16,4 @@ import controllers.BookControllerTest;
 })
 
 public class AllTests {
-}
+}*/
