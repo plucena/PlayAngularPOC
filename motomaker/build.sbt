@@ -12,3 +12,5 @@ libraryDependencies ++= Seq(
   cache,
   javaWs
 )
+
+jacoco.settings
