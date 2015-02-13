@@ -13,8 +13,8 @@ public class VOException extends Exception {
 	 * @throws Exception 
 	 * @see Exception#Exception(String)
 	 */
-	public VOException(String field) throws VOException {
-		super(String.format("%s %s", field, ExceptionMessages.FIELD_IS_REQUIRED).toString());
+	public VOException(String field, String message) throws VOException {
+		super(String.format("%s %s", field, message).toString());
 	}
 	
 	/**

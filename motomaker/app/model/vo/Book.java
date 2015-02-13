@@ -10,6 +10,7 @@ import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
 import play.data.validation.Constraints.MaxLength;
+import exception.ExceptionMessages;
 import exception.VOException;
 
 @Entity
@@ -36,7 +37,15 @@ public class Book extends Model {
 		return author;
 	}
 	
-	public void setAuthor(String author) {
+	public void setAuthor(String author) throws VOException {
+		if (StringFunctions.isNullOrEmptyOrWhiteSpace(author)) {
+			throw new VOException("Author", ExceptionMessages.FIELD_IS_REQUIRED);
+		}
+		
+		if (author.length() > 255) {
+			throw new VOException("Author", ExceptionMessages.maxLength(255));
+		}
+		
 		this.author = author;
 	}
 	
@@ -44,7 +53,15 @@ public class Book extends Model {
 		return collection;
 	}
 	
-	public void setCollection(String collection) {
+	public void setCollection(String collection) throws VOException {
+		if (StringFunctions.isNullOrEmptyOrWhiteSpace(collection)) {
+			throw new VOException("Collection", ExceptionMessages.FIELD_IS_REQUIRED);
+		}
+		
+		if (collection.length() > 255) {
+			throw new VOException("Collection", ExceptionMessages.maxLength(255));
+		}
+		
 		this.collection = collection;
 	}
 	
@@ -52,7 +69,11 @@ public class Book extends Model {
 		return other;
 	}
 	
-	public void setOther(String other) {
+	public void setOther(String other) throws VOException {
+		if (other.length() > 255) {
+			throw new VOException("Other", ExceptionMessages.maxLength(255));
+		}
+		
 		this.other = other;
 	}
 	
@@ -60,7 +81,15 @@ public class Book extends Model {
 		return title;
 	}
 	
-	public void setTitle(String title) {
+	public void setTitle(String title) throws VOException {
+		if (StringFunctions.isNullOrEmptyOrWhiteSpace(title)) {
+			throw new VOException("Title", ExceptionMessages.FIELD_IS_REQUIRED);
+		}
+		
+		if (title.length() > 255) {
+			throw new VOException("Title", ExceptionMessages.maxLength(255));
+		}
+		
 		this.title = title;
 	}
 	
@@ -68,14 +97,22 @@ public class Book extends Model {
 		return reader;
 	}
 
-	public void setReader(String reader) {
+	public void setReader(String reader) throws VOException {
+		if (StringFunctions.isNullOrEmptyOrWhiteSpace(reader)) {
+			throw new VOException("Reader", ExceptionMessages.FIELD_IS_REQUIRED);
+		}
+		
+		if (reader.length() > 255) {
+			throw new VOException("Reader", ExceptionMessages.maxLength(255));
+		}
+		
 		this.reader = reader;
 	}
 	
 	public Book(){};
 	
 	public Book(String author, String collection, String other,
-			String title, String reader) {
+			String title, String reader) throws VOException {
 		super();
 		setAuthor(author);
 		setCollection(collection);
