@@ -46,7 +46,7 @@ public class BookController extends BaseController {
 				BookService bookService = new BookService(new BookDAO());
 				Book book = getModelFromRequest(Book.class);
 				bookService.create(book);
-				return ok("ok " + book.getAuthor());
+				return ok("ok 2 " + book.getAuthor());
 			}
 		});
 	}
