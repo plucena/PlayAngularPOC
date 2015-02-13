@@ -7,6 +7,7 @@ import vo.BookTests;
 import controllers.BookControllerTest;
 
 @RunWith(Suite.class)
+
 @SuiteClasses({ 
 	BookTests.class,
 	BookServiceTests.class,
