@@ -18,10 +18,20 @@ public class Book extends Model {
 	@Id
 	@GeneratedValue
 	private int id;
+	
+    @Column(name="author")
 	private String author;
+	
+    @Column(name="collerction")
 	private String collection;
+	
+    @Column(name="other")
 	private String other;
+	
+    @Column(name="title")
 	private String title;
+	
+    @Column(name="reader")
 	private String reader;
 	
 	public int getId() {
