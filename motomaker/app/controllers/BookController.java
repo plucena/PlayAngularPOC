@@ -44,9 +44,9 @@ public class BookController extends BaseController {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
-				Book book = getModelFromRequest(Book.class);
-				bookService.create(book);
-				return ok("ok " + book.getAuthor());
+				//Book book = getModelFromRequest(Book.class);
+				//bookService.create(book);
+				//return ok("ok " + book.getAuthor());
 			}
 		});
 	}

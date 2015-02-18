@@ -14,7 +14,9 @@ import exception.ExceptionMessages;
 import exception.VOException;
 
 @Entity
-public class Book extends Model {
+@Table(name = "Book", schema = "KunderaExamples@cassandra_pu")
+
+public class Book {
 	@Id
 	@GeneratedValue
 	private int id;
