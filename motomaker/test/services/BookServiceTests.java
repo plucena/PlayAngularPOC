@@ -17,7 +17,6 @@ import org.junit.Test;
 import org.mockito.*;
 
 public class BookServiceTests {
-
 	@Before
 	public void setUp() {
 		start(fakeApplication(inMemoryDatabase()));
