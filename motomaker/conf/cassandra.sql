@@ -1,0 +1,11 @@
+create keyspace KunderaExamples;
+create column family Book;
+assume Book keys as ascii;
+assume Book comparator as ascii;
+assume Book validator as ascii;
+assume Book sub_comparator as ascii;
+set Book[0]['author'] = 'George Orwell';
+set Book[0]['title'] = '1984';
+set Book[0]['reader'] = 'plucena@gmail.com';
+set Book[0]['collection'] = 'wish';
+set Book[0]['other'] = '';

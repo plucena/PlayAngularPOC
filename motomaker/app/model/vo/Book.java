@@ -22,7 +22,7 @@ public class Book extends Model {
     @Column(name="author")
 	private String author;
 	
-    @Column(name="collerction")
+    @Column(name="collection")
 	private String collection;
 	
     @Column(name="other")
