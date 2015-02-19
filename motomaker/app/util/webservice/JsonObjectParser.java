@@ -18,7 +18,7 @@ public class JsonObjectParser {
 		return mapper.readTree(json);
 	}
 
-	public static <T extends Model> T Deserialize(JsonNode jsonNode, Class<T> type) throws IOException {
+	public static <T extends Object> T Deserialize(JsonNode jsonNode, Class<T> type) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonFactory factory = new JsonFactory();
 		JsonParser jp = factory.createJsonParser(jsonNode.toString());

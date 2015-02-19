@@ -26,7 +26,7 @@ public class KunderaExample
     	
     	
         Book book = new Book();
-        book.setId(3);
+        book.setId(3L);
         book.setOther("");
         book.setReader("plucena@gmail.com");
         book.setTitle("Brave New World");

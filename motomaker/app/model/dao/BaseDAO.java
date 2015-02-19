@@ -15,9 +15,10 @@ public class BaseDAO<T> {
 		_classType = classType;
 	}
 	
+	
 	public void create(Object beanObject) throws PersistenceException {
 		try {
-			Ebean.save(beanObject);
+			//Ebean.save(beanObject);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
@@ -33,7 +34,7 @@ public class BaseDAO<T> {
 	
 	public void update(Object beanObject) throws PersistenceException {
 		try {
-			Ebean.update(beanObject);
+			//Ebean.update(beanObject);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
@@ -41,7 +42,7 @@ public class BaseDAO<T> {
 	
 	public void delete(Object beanObject) throws PersistenceException {
 		try {
-			Ebean.delete(beanObject);
+			//Ebean.delete(beanObject);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}

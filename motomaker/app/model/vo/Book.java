@@ -1,25 +1,21 @@
 package model.vo;
 
-import play.db.ebean.Model;
-import util.StringFunctions;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
-import play.data.validation.Constraints.MaxLength;
+import util.StringFunctions;
 import exception.ExceptionMessages;
 import exception.VOException;
+import play.db.ebean.Model;
+import play.db.jpa.*;
+
 
 @Entity
 @Table(name = "Book", schema = "KunderaExamples@cassandra_pu")
 
-public class Book {
+public class Book extends Model    {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
     @Column(name="author")
 	private String author;
@@ -36,11 +32,11 @@ public class Book {
     @Column(name="reader")
 	private String reader;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
