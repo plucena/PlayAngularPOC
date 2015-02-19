@@ -2,8 +2,8 @@ package model.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
-import com.avaje.ebean.Ebean;
+import model.vo.*;
+import javax.persistence.Query;
 
 import exception.PersistenceException;
 
@@ -18,15 +18,20 @@ public class BaseDAO<T> {
 	
 	public void create(Object beanObject) throws PersistenceException {
 		try {
-			//Ebean.save(beanObject);
+			play.db.jpa.JPA.em().persist(beanObject);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> selectAll() throws PersistenceException {
 		try {
-			return Ebean.find(_classType).findList();
+			
+			 Query query = play.db.jpa.JPA.em().createQuery("SELECT e FROM Book e");
+			 return  query.getResultList();
+			    
+			//return Ebean.find(_classType).findList();
 		} catch (Exception ex) {
 			throw new PersistenceException(ex);
 		}
