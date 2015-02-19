@@ -7,7 +7,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 scalaVersion := "2.11.1"
 
 libraryDependencies ++= Seq(
-  javaJpa,  "org.hibernate" % "hibernate-entitymanager" % "4.3.6.Final",
+  javaJpa.exclude("org.hibernate.javax.persistence", "hibernate-jpa-2.0-api"), 
+  "org.hibernate" % "hibernate-entitymanager" % "4.3.0.Final",  
   javaJdbc,
   jdbc,
   javaEbean,
@@ -16,7 +17,7 @@ libraryDependencies ++= Seq(
   javaWs,
   ws
 )
-
+  
 resolvers ++= Seq(
 	"Kundera" at "https://oss.sonatype.org/content/repositories/releases",
 	"Riptano" at "http://mvn.riptano.com/content/repositories/public",
@@ -32,3 +33,4 @@ libraryDependencies ++= Seq(
   "org.webjars" 			% 	"respond" 					% "1.4.2",
   "com.impetus.client" 		% 	"kundera-cassandra" 		% "2.5"
 )
+
