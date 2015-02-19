@@ -2,6 +2,8 @@ package model.dao;
 
 import java.util.List;
 
+import javax.persistence.Table;
+
 import com.avaje.ebean.Ebean;
 
 import model.vo.Book;
@@ -15,7 +17,11 @@ public class BookDAO extends BaseDAO<Book> {
 
 	public List<Book> selectByReader(String reader) throws PersistenceException {
 		try {
-			return Ebean.find(Book.class).where().like("reader", reader).findList();
+			return play.db.jpa.JPA
+					.em()
+					.createNativeQuery(
+							String.format("SELECT * FROM Book WHERE reader like '%s'", reader))
+					.getResultList();
 		} catch (Exception ex) {
 			throw new PersistenceException(ex);
 		}
