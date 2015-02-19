@@ -20,7 +20,7 @@ import com.fasterxml.jackson.core.*;
 
 public class BookController extends BaseController {
 
-	@Transactional(readOnly=true)
+	@play.db.jpa.Transactional(readOnly=true)
 	public static Result listAll() {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
@@ -31,7 +31,7 @@ public class BookController extends BaseController {
 		});
 	}
 
-	@Transactional(readOnly=true)
+	@play.db.jpa.Transactional(readOnly=true)
 	public static Result selectByUser(final String reader) {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {

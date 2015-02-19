@@ -10,26 +10,26 @@ import play.db.jpa.*;
 
 
 @Entity
-@Table(name = "Book", schema = "KunderaExamples@cassandra_pu")
+@Table(name = "Book")
 
 public class Book extends Model    {
 	@Id
 	@GeneratedValue
 	private Long id;
 	
-    @Column(name="author")
+    @Column(name="author", length=255)
 	private String author;
 	
-    @Column(name="collection")
+    @Column(name="collection", length=255)
 	private String collection;
 	
-    @Column(name="other")
+    @Column(name="other", length=255)
 	private String other;
 	
-    @Column(name="title")
+    @Column(name="title", length=255)
 	private String title;
 	
-    @Column(name="reader")
+    @Column(name="reader", length=255)
 	private String reader;
 	
 	public Long getId() {

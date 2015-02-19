@@ -3,6 +3,7 @@ package vo;
 import static play.test.Helpers.fakeApplication;
 import static play.test.Helpers.inMemoryDatabase;
 import static play.test.Helpers.start;
+import javassist.bytecode.SignatureAttribute.ClassType;
 import model.dao.BookDAO;
 import model.vo.Book;
 
