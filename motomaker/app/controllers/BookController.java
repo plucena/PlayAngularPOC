@@ -13,12 +13,14 @@ import util.webservice.JsonObjectParser;
 import views.html.*;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.annotation.Transactional;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.*;
 
 public class BookController extends BaseController {
 
+	@Transactional(readOnly=true)
 	public static Result listAll() {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
@@ -29,6 +31,7 @@ public class BookController extends BaseController {
 		});
 	}
 
+	@Transactional(readOnly=true)
 	public static Result selectByUser(final String reader) {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
