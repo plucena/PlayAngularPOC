@@ -34,7 +34,7 @@ public class BaseDAO<T> {
         tc.setCqlVersion(CassandraConstants.CQL_VERSION_3_0);
 	}
 
-	public void create(Object newObject) throws PersistenceException {
+	public void save(Object newObject) throws PersistenceException {
 		try { 
 			_entityManager.persist(newObject);
 		} catch (Exception e) {
@@ -55,17 +55,9 @@ public class BaseDAO<T> {
 		}
 	}
 
-	public void update(Object objectToUpdate) throws PersistenceException {
-		try {
-			// Ebean.update(beanObject);
-		} catch (Exception e) {
-			throw new PersistenceException(e);
-		}
-	}
-
 	public void delete(Object objectToDelete) throws PersistenceException {
 		try {
-			// Ebean.delete(beanObject);
+			_entityManager.remove(objectToDelete);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}

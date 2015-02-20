@@ -15,9 +15,9 @@ public abstract class BaseService<T> {
 		_baseDAO = new BaseDAO<T>(classType);
 	}
 	
-	public void create(Object beanObject) throws BusinessException {
+	public void save(Object objectToDelete) throws BusinessException {
 		try {
-			_baseDAO.create(beanObject);
+			_baseDAO.save(objectToDelete);
 		} catch (PersistenceException pe) {
 			throw new BusinessException(pe);
 		}
@@ -31,17 +31,9 @@ public abstract class BaseService<T> {
 		}
 	}
 	
-	public void update(Object beanObject) throws BusinessException {
+	public void delete(Object objectToDelete) throws BusinessException {
 		try {
-			_baseDAO.update(beanObject);
-		} catch (PersistenceException pe) {
-			throw new BusinessException(pe);
-		}
-	}
-	
-	public void delete(Object beanObject) throws BusinessException {
-		try {
-			_baseDAO.delete(beanObject);
+			_baseDAO.delete(objectToDelete);
 		} catch (PersistenceException pe) {
 			throw new BusinessException(pe);
 		}

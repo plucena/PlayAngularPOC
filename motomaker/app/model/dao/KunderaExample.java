@@ -24,7 +24,7 @@ public class KunderaExample
     	map.put("sessionless", "false");
     	
         Book book = new Book();
-        book.setId("3");
+        //book.setId("3");
         book.setOther("");
         book.setReader("plucena@gmail.com");
         book.setTitle("Brave New World");

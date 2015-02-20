@@ -46,9 +46,9 @@ public class BookServiceTests {
 		Book book1 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
 		Book book2 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Clash of Kings", "plucena@ciandt.com");
 		Book book3 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Storm of Swords", "mleonardi@ciandt.com");
-		bookDAO.create(book1);
-		bookDAO.create(book2);
-		bookDAO.create(book3);
+		bookDAO.save(book1);
+		bookDAO.save(book2);
+		bookDAO.save(book3);
 		
 		BookService bookService = new BookService(bookDAO);
 		

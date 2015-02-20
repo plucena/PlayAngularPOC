@@ -4,7 +4,7 @@ CREATE COLUMN FAMILY Book
 WITH comparator = UTF8Type
 AND key_validation_class=UTF8Type
 AND column_metadata = [
-{column_name: id, validation_class: LongType, index_type: KEYS}
+{column_name: id, validation_class: UTF8Type, index_type: KEYS}
 {column_name: author, validation_class: UTF8Type, index_type: KEYS}
 {column_name: title, validation_class: UTF8Type, index_type: KEYS}
 {column_name: reader, validation_class: UTF8Type, index_type: KEYS}
