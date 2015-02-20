@@ -28,7 +28,7 @@ public class BookServiceTests {
 		BookDAO bookDAO = Mockito.mock(BookDAO.class);
 		
 		List<Book> bookList = new LinkedList<Book>();
-		bookList.add(new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com"));
+		bookList.add(new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com"));
 		
 		Mockito.when(bookDAO.selectByReader("mleonardi@ciandt.com")).thenReturn(bookList);
 		
@@ -43,9 +43,9 @@ public class BookServiceTests {
 	public void selectByUserValidWithDatabaseInMemory() throws Exception {
 		BookDAO bookDAO = new BookDAO();
 		
-		Book book1 = new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
-		Book book2 = new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Clash of Kings", "plucena@ciandt.com");
-		Book book3 = new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Storm of Swords", "mleonardi@ciandt.com");
+		Book book1 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		Book book2 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Clash of Kings", "plucena@ciandt.com");
+		Book book3 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Storm of Swords", "mleonardi@ciandt.com");
 		bookDAO.create(book1);
 		bookDAO.create(book2);
 		bookDAO.create(book3);

@@ -116,9 +116,10 @@ public class Book {
 	
 	public Book(){};
 	
-	public Book(String author, String collection, String other,
+	public Book(String id, String author, String collection, String other,
 			String title, String reader) throws VOException {
 		super();
+		setId(id);
 		setAuthor(author);
 		setCollection(collection);
 		setOther(other);

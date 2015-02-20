@@ -28,7 +28,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Author is required");
 		
-		new Book("", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		new Book("0", "", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -36,7 +36,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Collection is required");
 		
-		new Book("George R. R. Martin", "", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin", "", "", "A Game of Thrones", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Title is required");
 		
-		new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -52,7 +52,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Reader is required");
 		
-		new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "");
+		new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "");
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Author have limit of 255 characters");
 		
-		new Book("George R. R. Martin Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Della", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Della", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Collection have limit of 255 characters");
 		
-		new Book("George R. R. Martin", "Collection of The Best Books of the Entire World George R. R. Martin Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bou", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin", "Collection of The Best Books of the Entire World George R. R. Martin Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bou", "", "A Game of Thrones", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Other have limit of 255 characters");
 		
-		new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "Other Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Dellacour from Tooo", "A Game of Thrones", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "Other Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Dellacour from Tooo", "A Game of Thrones", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -84,7 +84,7 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Title have limit of 255 characters");
 		
-		new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Dellaco", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Dellaco", "mleonardi@ciandt.com");
 	}
 	
 	@Test
@@ -92,11 +92,11 @@ public class BookTests {
 		thrown.expect(VOException.class);
 		thrown.expectMessage("Reader have limit of 255 characters");
 		
-		new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Dell");
+		new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com Agatha Cristie Monteiro Lobato Tia Anastácia Pedro de Alcântara Francisco António João Carlos Xavier de Paula Miguel Rafael Joaquim José Gonzaga Pascoal Cipriano Serafim de Bragança e Bourbon da Silva Souza Sales Oliveira da Silva Dell");
 	}
 	
 	@Test
 	public void BookIsValid() throws VOException {
-		new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
 	}
 }

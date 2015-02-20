@@ -34,11 +34,9 @@ public class BaseDAO<T> {
         tc.setCqlVersion(CassandraConstants.CQL_VERSION_3_0);
 	}
 
-	public void create(Object beanObject) throws PersistenceException {
-		try 
-		{ 
-			play.db.jpa.JPA.em().merge(beanObject);
-			play.db.jpa.JPA.em().persist(beanObject);
+	public void create(Object newObject) throws PersistenceException {
+		try { 
+			_entityManager.persist(newObject);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
@@ -57,7 +55,7 @@ public class BaseDAO<T> {
 		}
 	}
 
-	public void update(Object beanObject) throws PersistenceException {
+	public void update(Object objectToUpdate) throws PersistenceException {
 		try {
 			// Ebean.update(beanObject);
 		} catch (Exception e) {
@@ -65,7 +63,7 @@ public class BaseDAO<T> {
 		}
 	}
 
-	public void delete(Object beanObject) throws PersistenceException {
+	public void delete(Object objectToDelete) throws PersistenceException {
 		try {
 			// Ebean.delete(beanObject);
 		} catch (Exception e) {

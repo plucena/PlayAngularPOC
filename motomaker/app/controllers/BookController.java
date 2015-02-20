@@ -43,12 +43,13 @@ public class BookController extends BaseController {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	@play.db.jpa.Transactional
 	public static Result create() {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
 			BookService bookService = new BookService(new BookDAO());
-			//Book book = getModelFromRequest(Book.class);
-		    //bookService.create(book);
+			Book book = getModelFromRequest(Book.class);
+		    bookService.create(book);
 			return ok("ok ");
 			}
 		});

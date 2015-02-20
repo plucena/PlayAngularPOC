@@ -54,7 +54,7 @@ public class BookControllerTest {
 	
     @Test
     public void createBook() throws Exception {
-		Book book = new Book("Jake Delta", "wish", "", "Play Framework 2 For Java", "mleonardi@ciandt.com");
+		Book book = new Book("0", "Jake Delta", "wish", "", "Play Framework 2 For Java", "mleonardi@ciandt.com");
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(book);
 		JsonNode jsonNode = mapper.readTree(json);        
