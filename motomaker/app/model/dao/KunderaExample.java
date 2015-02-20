@@ -23,10 +23,8 @@ public class KunderaExample
     	map.put("kundera.client", "com.impetus.kundera.client.PelopsClient");
     	map.put("sessionless", "false");
     	
-    	
-    	
         Book book = new Book();
-        book.setId(3L);
+        book.setId("3");
         book.setOther("");
         book.setReader("plucena@gmail.com");
         book.setTitle("Brave New World");

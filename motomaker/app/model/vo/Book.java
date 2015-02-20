@@ -14,7 +14,7 @@ import play.db.jpa.*;
 
 public class Book {
 	@Id
-	private Long id;
+	private String id;
 	
     @Column(name="author")
 	private String author;
@@ -31,11 +31,11 @@ public class Book {
     @Column(name="reader")
 	private String reader;
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
