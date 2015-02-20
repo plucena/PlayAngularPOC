@@ -7,7 +7,6 @@ import exception.ExceptionMessages;
 import exception.VOException;
 import play.db.jpa.*;
 
-
 @Entity
 
 @Table(name = "Book", schema = "KunderaExamples@cassandra_pu")
@@ -17,19 +16,19 @@ public class Book {
 	private String id;
 	
     @Column(name="author")
-	private String author;
+	public String author;
 	
     @Column(name="collection")
-	private String collection;
+	public String collection;
 	
     @Column(name="other")
-	private String other;
+	public String other;
 	
     @Column(name="title")
-	private String title;
+	public String title;
 	
     @Column(name="reader")
-	private String reader;
+	public String reader;
 	
 	public String getId() {
 		return id;
