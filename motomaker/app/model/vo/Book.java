@@ -14,22 +14,22 @@ import play.db.jpa.*;
 
 public class Book {
 	@Id
-	private Long id;
+	public Long id;
 	
     @Column(name="author")
-	private String author;
+	public String author;
 	
     @Column(name="collection")
-	private String collection;
+	public String collection;
 	
     @Column(name="other")
-	private String other;
+	public String other;
 	
     @Column(name="title")
-	private String title;
+	public String title;
 	
     @Column(name="reader")
-	private String reader;
+	public String reader;
 	
 	public Long getId() {
 		return id;
