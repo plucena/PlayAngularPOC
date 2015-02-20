@@ -1,5 +1,6 @@
 create keyspace KunderaExamples;
 create column family Book;
+create column family book with comparator=UTF8Type and default_validation_class=UTF8Type and key_validation_class=UTF8Type;
 assume Book keys as ascii;
 assume Book comparator as ascii;
 assume Book validator as ascii;
@@ -9,3 +10,8 @@ set Book[0]['title'] = '1984';
 set Book[0]['reader'] = 'plucena@gmail.com';
 set Book[0]['collection'] = 'wish';
 set Book[0]['other'] = '';
+set book[0]['author'] = 'George Orwell';
+set book[0]['title'] = '1984';
+set book[0]['reader'] = 'plucena@gmail.com';
+set book[0]['collection'] = 'wish';
+set book[0]['other'] = '';

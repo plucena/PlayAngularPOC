@@ -5,31 +5,30 @@ import javax.persistence.*;
 import util.StringFunctions;
 import exception.ExceptionMessages;
 import exception.VOException;
-import play.db.ebean.Model;
 import play.db.jpa.*;
 
 
 @Entity
-@Table(name = "Book")
 
-public class Book extends Model    {
+@Table(name = "Book", schema = "KunderaExamples@cassandra_pu")
+
+public class Book {
 	@Id
-	@GeneratedValue
 	private Long id;
 	
-    @Column(name="author", length=255)
+    @Column(name="author")
 	private String author;
 	
-    @Column(name="collection", length=255)
+    @Column(name="collection")
 	private String collection;
 	
-    @Column(name="other", length=255)
+    @Column(name="other")
 	private String other;
 	
-    @Column(name="title", length=255)
+    @Column(name="title")
 	private String title;
 	
-    @Column(name="reader", length=255)
+    @Column(name="reader")
 	private String reader;
 	
 	public Long getId() {
