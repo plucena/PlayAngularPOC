@@ -40,7 +40,7 @@ public class BaseDAO<T> {
 	public void save(Object object) throws PersistenceException {
 		try {			
 			if (StringFunctions.isNullOrEmptyOrWhiteSpace(object.getClass().getMethod("getId").invoke(object).toString())) {
-				Class[] params = new Class[1];	
+				Class[] params = new Class[1];
 				params[0] = String.class;
 				
 				object.getClass().getMethod("setId", params).invoke(object, UUID.randomUUID().toString());
@@ -56,14 +56,14 @@ public class BaseDAO<T> {
 		return _entityManager.find(_classType, id);
 	}
 
-	public List<T> selectBy(String field, String id) {
+	public List<T> selectBy(String field, String value) {
 		return _entityManager
 				.createQuery(
 						String.format(
 								"SELECT e FROM %s e WHERE e.%s = %s",
 								_classType.getAnnotation(Table.class).name(),
 								field,
-								id),
+								value),
 							_classType)
 				.getResultList();
 	}

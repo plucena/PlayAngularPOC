@@ -29,8 +29,8 @@ public abstract class BaseService<T> {
 		return _baseDAO.selectById(id);
 	}
 
-	public List<T> selectBy(String field, String id) {
-		return _baseDAO.selectBy(field, id);
+	public List<T> selectBy(String field, String value) {
+		return _baseDAO.selectBy(field, value);
 	}
 	
 	public List<T> selectAll() throws BusinessException {
