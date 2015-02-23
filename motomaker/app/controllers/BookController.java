@@ -39,7 +39,7 @@ public class BookController extends BaseController {
 		return executionHandler(new Callable<Result>() {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
-				List<Book> lista = bookService.selectByReader(reader);
+				List<Book> lista = bookService.selectBy("reader", reader);
 				return ok(JsonObjectParser.Serialize(lista));
 			}
 		});
@@ -53,7 +53,19 @@ public class BookController extends BaseController {
 				BookService bookService = new BookService(new BookDAO());
 				Book book = getModelFromRequest(Book.class);
 				bookService.save(book);
-				return ok(String.format("ok"));
+				return ok("saved");
+			}
+		});
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	@play.db.jpa.Transactional
+	public static Result delete(final String id) {
+		return executionHandler(new Callable<Result>() {
+			public Result call() throws Exception {
+				BookService bookService = new BookService(new BookDAO());
+				bookService.delete(id);
+				return ok("deleted");
 			}
 		});
 	}

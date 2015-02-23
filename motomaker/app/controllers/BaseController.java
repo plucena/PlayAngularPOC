@@ -26,6 +26,10 @@ public abstract class BaseController extends Controller {
 		try {
 			return callable.call();
 		} catch (Exception e) {
+			if (e.getMessage().contains("Entity to be removed must not be null")) {
+				return internalServerError("Id invalid");
+			}
+			
 			return internalServerError(e.getMessage());
 		}
 	}

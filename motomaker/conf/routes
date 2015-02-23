@@ -3,10 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /Book/webresources/com.percivallucena.book.book	controllers.BookController.listAll()
-PUT 	/Book/webresources/com.percivallucena.book.book	controllers.BookController.save()
+GET     /Book/webresources/com.percivallucena.book.book			controllers.BookController.listAll()
+PUT 	/Book/webresources/com.percivallucena.book.book			controllers.BookController.save()
+DELETE 	/Book/webresources/com.percivallucena.book.book/:id		controllers.BookController.delete(id: String)
 
-GET     /Book/webresources/com.percivallucena.book.book/:user	controllers.BookController.selectByUser(user: String)
+GET     /Book/webresources/com.percivallucena.book.book/:reader	controllers.BookController.selectByUser(reader: String)
 
 
 # Map static resources from the /public folder to the /assets URL path

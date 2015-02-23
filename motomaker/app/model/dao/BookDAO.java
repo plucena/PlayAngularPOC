@@ -20,16 +20,4 @@ public class BookDAO extends BaseDAO<Book> {
 	public BookDAO() {
 		super(Book.class);
 	}
-
-	public List<Book> selectByReader(String reader) throws PersistenceException {
-		try {
-			return _entityManager
-					.createQuery(
-							String.format("SELECT b FROM Book b WHERE b.reader = %s", reader),
-							Book.class)
-					.getResultList();
-		} catch (Exception ex) {
-			throw new PersistenceException(ex);
-		}
-	}
 }

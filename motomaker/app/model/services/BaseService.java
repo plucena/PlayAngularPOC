@@ -24,6 +24,14 @@ public abstract class BaseService<T> {
 			throw new BusinessException(pe);
 		}
 	}
+
+	public Object selectById(String id) {
+		return _baseDAO.selectById(id);
+	}
+
+	public List<T> selectBy(String field, String id) {
+		return _baseDAO.selectBy(field, id);
+	}
 	
 	public List<T> selectAll() throws BusinessException {
 		try {
@@ -35,15 +43,9 @@ public abstract class BaseService<T> {
 	
 	public void delete(String id) throws BusinessException {
 		try {
-			Object objectToDelete = selectBy("id", id);
-			
-			_baseDAO.delete(objectToDelete);
+			_baseDAO.delete(id);
 		} catch (PersistenceException pe) {
 			throw new BusinessException(pe);
 		}
-	}
-
-	public Object selectBy(String field, String id) {
-		return _baseDAO.selectBy(field, id);
 	}
 }

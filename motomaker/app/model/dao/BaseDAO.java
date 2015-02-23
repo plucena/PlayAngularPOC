@@ -52,6 +52,22 @@ public class BaseDAO<T> {
 		}
 	}
 
+	public Object selectById(String id) {
+		return _entityManager.find(_classType, id);
+	}
+
+	public List<T> selectBy(String field, String id) {
+		return _entityManager
+				.createQuery(
+						String.format(
+								"SELECT e FROM %s e WHERE e.%s = %s",
+								_classType.getAnnotation(Table.class).name(),
+								field,
+								id),
+							_classType)
+				.getResultList();
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<T> selectAll() throws PersistenceException {
 		try {
@@ -65,16 +81,13 @@ public class BaseDAO<T> {
 		}
 	}
 
-	public void delete(Object objectToDelete) throws PersistenceException {
+	public void delete(String id) throws PersistenceException {
 		try {
+			Object objectToDelete = selectById(id);
+			
 			_entityManager.remove(objectToDelete);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
-	}
-
-	public Object selectBy(String field, String id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
