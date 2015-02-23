@@ -1,9 +1,11 @@
 package model.dao;
 
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import model.vo.*;
 
@@ -13,6 +15,7 @@ import javax.persistence.Query;
 import javax.persistence.Table;
 
 import play.db.jpa.JPA;
+import util.StringFunctions;
 
 import com.impetus.client.cassandra.common.CassandraConstants;
 import com.impetus.client.cassandra.thrift.ThriftClient;
@@ -21,7 +24,7 @@ import com.impetus.kundera.client.Client;
 import exception.PersistenceException;
 
 public class BaseDAO<T> {
-
+	
 	private Class<T> _classType;
 	protected EntityManager _entityManager;
 
@@ -34,9 +37,16 @@ public class BaseDAO<T> {
         tc.setCqlVersion(CassandraConstants.CQL_VERSION_3_0);
 	}
 
-	public void save(Object newObject) throws PersistenceException {
-		try { 
-			_entityManager.persist(newObject);
+	public void save(Object object) throws PersistenceException {
+		try {			
+			if (StringFunctions.isNullOrEmptyOrWhiteSpace(object.getClass().getMethod("getId").invoke(object).toString())) {
+				Class[] params = new Class[1];	
+				params[0] = String.class;
+				
+				object.getClass().getMethod("setId", params).invoke(object, UUID.randomUUID().toString());
+			}
+			
+			_entityManager.persist(object);
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
@@ -61,5 +71,10 @@ public class BaseDAO<T> {
 		} catch (Exception e) {
 			throw new PersistenceException(e);
 		}
+	}
+
+	public Object selectBy(String field, String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -123,18 +123,7 @@ public class Book {
 	public Book(String id, String author, String collection, String other,
 			String title, String reader) throws VOException {
 		super();
-
-		char[] chars = "abcdefghijklmnopqrstuvwxyzABSDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-				.toCharArray();
-		Random r = new Random(System.currentTimeMillis());
-		char[] idTemp = new char[16];
-		for (int i = 0; i < 16; i++) {
-			idTemp[i] = chars[r.nextInt(chars.length)];
-		}
-
-		String uuidTemp = new String(idTemp);
-
-		setId(uuidTemp);
+		setId(id);
 		setAuthor(author);
 		setCollection(collection);
 		setOther(other);

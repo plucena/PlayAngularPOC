@@ -52,13 +52,8 @@ public class BookController extends BaseController {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
 				Book book = getModelFromRequest(Book.class);
-
-				if (StringFunctions.isNullOrEmptyOrWhiteSpace(book.getId())) {
-					book.setId(UUID.randomUUID().toString());
-				}
-
 				bookService.save(book);
-				return ok("ok ");
+				return ok(String.format("ok"));
 			}
 		});
 	}
