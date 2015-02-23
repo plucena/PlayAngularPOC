@@ -36,6 +36,14 @@ public class BaseDAO<T> {
         ThriftClient tc = (ThriftClient) clientMap.get("cassandra_pu");
         tc.setCqlVersion(CassandraConstants.CQL_VERSION_3_0);
 	}
+	
+	public void close() throws PersistenceException {
+		try {			
+			_entityManager.close();
+		} catch (Exception e) {
+			throw new PersistenceException(e);
+		}
+	}
 
 	public void save(Object object) throws PersistenceException {
 		try {			

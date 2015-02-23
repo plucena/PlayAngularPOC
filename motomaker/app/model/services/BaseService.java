@@ -17,6 +17,14 @@ public abstract class BaseService<T> {
 		_baseDAO = new BaseDAO<T>(classType);
 	}
 	
+	public void close() throws BusinessException {
+		try {
+			_baseDAO.close();
+		} catch (PersistenceException pe) {
+			throw new BusinessException(pe);
+		}
+	}
+	
 	public void save(Object object) throws BusinessException {
 		try {
 			_baseDAO.save(object);

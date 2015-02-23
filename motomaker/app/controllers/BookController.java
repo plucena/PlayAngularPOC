@@ -29,6 +29,7 @@ public class BookController extends BaseController {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
 				List<Book> lista = bookService.selectAll();
+				bookService.close();
 				return ok(JsonObjectParser.Serialize(lista));
 			}
 		});
@@ -40,6 +41,7 @@ public class BookController extends BaseController {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
 				List<Book> lista = bookService.selectBy("reader", reader);
+				bookService.close();
 				return ok(JsonObjectParser.Serialize(lista));
 			}
 		});
@@ -53,6 +55,7 @@ public class BookController extends BaseController {
 				BookService bookService = new BookService(new BookDAO());
 				Book book = getModelFromRequest(Book.class);
 				bookService.save(book);
+				bookService.close();
 				return ok("saved");
 			}
 		});
@@ -65,6 +68,7 @@ public class BookController extends BaseController {
 			public Result call() throws Exception {
 				BookService bookService = new BookService(new BookDAO());
 				bookService.delete(id);
+				bookService.close();
 				return ok("deleted");
 			}
 		});
