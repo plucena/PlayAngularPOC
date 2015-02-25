@@ -56,8 +56,8 @@ public class BookController extends BaseController {
 				
 				if(null == CacheSingleton.getCacheSingletonInstance().getFromCache(reader)){
 					BookService bookService = new BookService(new BookDAO());
-					List<Book> lista = (List<Book>) bookService.selectById(reader);
-					CacheSingleton.getCacheSingletonInstance().putOnCache(reader, lista);
+					List<Book> book = bookService.selectBy("reader", reader);
+					CacheSingleton.getCacheSingletonInstance().putOnCache(reader, book);
 				}
 				
 				return ok(JsonObjectParser.Serialize(CacheSingleton.getCacheSingletonInstance().getFromCache(reader)));
