@@ -10,6 +10,7 @@ import model.dao.BookDAO;
 import model.services.BookService;
 import model.vo.Book;
 import play.*;
+import play.cache.Cached;
 import play.mvc.*;
 import util.StringFunctions;
 import util.webservice.JsonObjectParser;
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.core.*;
 
 public class BookController extends BaseController {
 
+	@Cached(key = "listaAll", duration = 60 * 1)
 	@play.db.jpa.Transactional(readOnly = true)
 	public static Result listAll() {
 		return executionHandler(new Callable<Result>() {
@@ -43,6 +45,22 @@ public class BookController extends BaseController {
 				List<Book> lista = bookService.selectBy("reader", reader);
 				bookService.close();
 				return ok(JsonObjectParser.Serialize(lista));
+			}
+		});
+	}
+	
+	@play.db.jpa.Transactional(readOnly = true)
+	public static Result getUserFromCache(final String reader) {
+		return executionHandler(new Callable<Result>() {
+			public Result call() throws Exception {
+				
+				if(null == CacheSingleton.getCacheSingletonInstance().getFromCache(reader)){
+					BookService bookService = new BookService(new BookDAO());
+					List<Book> lista = (List<Book>) bookService.selectById(reader);
+					CacheSingleton.getCacheSingletonInstance().putOnCache(reader, lista);
+				}
+				
+				return ok(JsonObjectParser.Serialize(CacheSingleton.getCacheSingletonInstance().getFromCache(reader)));
 			}
 		});
 	}
