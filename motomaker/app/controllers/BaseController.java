@@ -13,7 +13,7 @@ import util.webservice.JsonObjectParser;
 
 public abstract class BaseController extends Controller {
 	
-	protected static <T extends Model> T getModelFromRequest(Class<T> type) throws BusinessException {
+	protected static <T> T getModelFromRequest(Class<T> type) throws BusinessException {
 		try {
 			JsonNode json = request().body().asJson();
 			return JsonObjectParser.Deserialize(json, type);
@@ -26,6 +26,10 @@ public abstract class BaseController extends Controller {
 		try {
 			return callable.call();
 		} catch (Exception e) {
+			if (e.getMessage().contains("Entity to be removed must not be null")) {
+				return internalServerError("Id invalid");
+			}
+			
 			return internalServerError(e.getMessage());
 		}
 	}

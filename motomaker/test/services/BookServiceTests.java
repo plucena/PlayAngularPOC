@@ -27,13 +27,13 @@ public class BookServiceTests {
 		BookDAO bookDAO = Mockito.mock(BookDAO.class);
 		
 		List<Book> bookList = new LinkedList<Book>();
-		bookList.add(new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com"));
+		bookList.add(new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com"));
 		
-		Mockito.when(bookDAO.selectByReader("mleonardi@ciandt.com")).thenReturn(bookList);
+		Mockito.when(bookDAO.selectBy("reader", "mleonardi@ciandt.com")).thenReturn(bookList);
 		
 		BookService bookService = new BookService(bookDAO);
 		
-		List<Book> books = bookService.selectByReader("mleonardi@ciandt.com");
+		List<Book> books = bookService.selectBy("reader", "mleonardi@ciandt.com");
 		
 		assertEquals(1, books.size());
 	}
@@ -42,16 +42,16 @@ public class BookServiceTests {
 	public void selectByUserValidWithDatabaseInMemory() throws Exception {
 		BookDAO bookDAO = new BookDAO();
 		
-		Book book1 = new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
-		Book book2 = new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Clash of Kings", "plucena@ciandt.com");
-		Book book3 = new Book("George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Storm of Swords", "mleonardi@ciandt.com");
-		bookDAO.create(book1);
-		bookDAO.create(book2);
-		bookDAO.create(book3);
+		Book book1 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com");
+		Book book2 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Clash of Kings", "plucena@ciandt.com");
+		Book book3 = new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Storm of Swords", "mleonardi@ciandt.com");
+		bookDAO.save(book1);
+		bookDAO.save(book2);
+		bookDAO.save(book3);
 		
 		BookService bookService = new BookService(bookDAO);
 		
-		List<Book> books = bookService.selectByReader("mleonardi@ciandt.com");
+		List<Book> books = bookService.selectBy("reader", "mleonardi@ciandt.com");
 		
 		assertEquals(2, books.size());
 	}

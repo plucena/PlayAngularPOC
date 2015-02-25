@@ -14,12 +14,4 @@ public class BookService extends BaseService<Book> {
 		super(Book.class);
 		_bookDAO = bookDAO;
 	}
-	
-	public List<Book> selectByReader(String reader) throws BusinessException {
-		try {
-			return _bookDAO.selectByReader(reader);
-		} catch (PersistenceException pe) {
-			throw new BusinessException(pe);
-		}
-	}
 }
