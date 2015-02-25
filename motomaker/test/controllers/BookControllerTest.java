@@ -59,7 +59,7 @@ public class BookControllerTest {
 		String json = mapper.writeValueAsString(book);
 		JsonNode jsonNode = mapper.readTree(json);        
         
-    	Result result = callAction(controllers.routes.ref.BookController.create(), fakeRequest().withJsonBody(jsonNode));
+    	Result result = callAction(controllers.routes.ref.BookController.save(), fakeRequest().withJsonBody(jsonNode));
     	
     	assertThat(status(result)).isEqualTo(OK);
     }
@@ -69,7 +69,7 @@ public class BookControllerTest {
     	ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonNode = mapper.readTree("{\"author\": \"Jake Delta\", \"collection\": \"wish\", \"id\": 188, \"other\": \"\", \"title\": \"Play Framework 2 For Java\", \"loguser\": \"plucena@gmail.com\"}");        
         
-    	Result result = callAction(controllers.routes.ref.BookController.create(), fakeRequest().withJsonBody(jsonNode));
+    	Result result = callAction(controllers.routes.ref.BookController.save(), fakeRequest().withJsonBody(jsonNode));
     	
     	assertThat(status(result)).isEqualTo(INTERNAL_SERVER_ERROR);
     }

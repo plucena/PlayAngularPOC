@@ -30,11 +30,11 @@ public class BookServiceTests {
 		List<Book> bookList = new LinkedList<Book>();
 		bookList.add(new Book("0", "George R. R. Martin", "As Crônicas de Gelo e Fogo", "", "A Game of Thrones", "mleonardi@ciandt.com"));
 		
-		Mockito.when(bookDAO.selectByReader("mleonardi@ciandt.com")).thenReturn(bookList);
+		Mockito.when(bookDAO.selectBy("reader", "mleonardi@ciandt.com")).thenReturn(bookList);
 		
 		BookService bookService = new BookService(bookDAO);
 		
-		List<Book> books = bookService.selectByReader("mleonardi@ciandt.com");
+		List<Book> books = bookService.selectBy("reader", "mleonardi@ciandt.com");
 		
 		assertEquals(1, books.size());
 	}
@@ -52,7 +52,7 @@ public class BookServiceTests {
 		
 		BookService bookService = new BookService(bookDAO);
 		
-		List<Book> books = bookService.selectByReader("mleonardi@ciandt.com");
+		List<Book> books = bookService.selectBy("reader", "mleonardi@ciandt.com");
 		
 		assertEquals(2, books.size());
 	}
